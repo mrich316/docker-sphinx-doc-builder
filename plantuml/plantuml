@@ -1,0 +1,2 @@
+#!/bin/sh -e
+java -jar /usr/share/plantuml/plantuml.jar -config /usr/share/plantuml/plantuml.config "$@"
