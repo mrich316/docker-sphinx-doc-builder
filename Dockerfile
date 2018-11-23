@@ -24,9 +24,12 @@ RUN apk add --no-cache \
       sphinxcontrib-plantuml==${SPHINXCONTRIB_PLANTUML_VERSION}
 
 COPY plantuml/ /usr/share/plantuml/
+COPY docker-entrypoint.sh /
 
 RUN mv /usr/share/plantuml/plantuml /usr/bin/ \
-  && chmod +x /usr/bin/plantuml \
+  && chmod +x \
+       /docker-entrypoint.sh \
+       /usr/bin/plantuml \
   # Download PlantUML and validate checksum.
   && mkdir -p /usr/share/plantuml \
   && cd /usr/share/plantuml \
@@ -42,8 +45,6 @@ RUN mv /usr/share/plantuml/plantuml /usr/bin/ \
   && rm Lato.zip \
   && fc-cache
 
-COPY docker-entrypoint.sh /
 COPY quickstart_templates/* /etc/defaults/sphinx/
 WORKDIR /doc
-#ENTRYPOINT [ "make", "-C", "/etc/defaults/plantuml/" ]
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
