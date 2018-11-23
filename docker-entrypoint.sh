@@ -6,7 +6,7 @@ usage() {
     echo
     echo "where 'command' is one of:"
     echo "  - quickstart:"
-    echo "  - sphinx-quickstart: Create a new documentation site (by default in /docs)"
+    echo "  - sphinx-quickstart: Create a new documentation site (by default in /doc)"
     echo "    Execute 'sphinx-quickstart --help' for all command line options."
     echo
     echo "  - make: Build the sphinx documentation."

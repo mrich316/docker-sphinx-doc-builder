@@ -44,6 +44,6 @@ RUN mv /usr/share/plantuml/plantuml /usr/bin/ \
 
 COPY docker-entrypoint.sh /
 COPY quickstart_templates/* /etc/defaults/sphinx/
-WORKDIR /docs
+WORKDIR /doc
 #ENTRYPOINT [ "make", "-C", "/etc/defaults/plantuml/" ]
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
