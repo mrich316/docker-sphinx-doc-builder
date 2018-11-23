@@ -14,8 +14,8 @@ usage() {
     echo "    This options is only valid if a sphinx doc exists."
 }
 
-command="$1"
-shift
+command=${1:-help}
+shift $(( $# > 0 ? 1 : 0 ))
 
 case "$command" in
 
@@ -33,8 +33,10 @@ case "$command" in
         else
             echo "Sphinx documentation not found."
             usage
+            exit 1
         fi
         ;;
+
     *)
         usage
         exit 1
