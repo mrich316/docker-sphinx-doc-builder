@@ -43,8 +43,15 @@ RUN mv /usr/share/plantuml/plantuml /usr/bin/ \
   && curl -sSL --output Lato.zip https://fonts.google.com/download?family=Lato \
   && unzip Lato.zip \
   && rm Lato.zip \
-  && fc-cache
+  && fc-cache \
+  # Create user
+  && adduser \
+       --no-create-home \
+       --disabled-password \
+       --gecos '' \
+       --uid 1000 sphinx-doc
 
 COPY quickstart_templates/* /etc/defaults/sphinx/
+USER sphinx-doc
 WORKDIR /doc
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
